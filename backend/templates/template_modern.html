@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        @page { size: letter; margin: 0.3in; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 10px; color: #2a2a2a; line-height: 1.5; }
+        .container { display: table; width: 100%; }
+        .sidebar { display: table-cell; width: 30%; background-color: #1a3a52; color: white; padding: 18px; vertical-align: top; }
+        .main { display: table-cell; width: 70%; padding: 18px 18px 18px 22px; vertical-align: top; }
+        h1 { font-size: 28px; font-weight: 700; letter-spacing: 0.5px; margin-bottom: 8px; }
+        .sidebar h1 { color: #ffb700; text-align: center; margin-bottom: 15px; }
+        .main h1 { color: #1a3a52; }
+        h2 { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-top: 14px; margin-bottom: 8px; padding-bottom: 6px; }
+        .main h2 { color: #1a3a52; border-bottom: 3px solid #ff6b6b; }
+        .sidebar h2 { color: #ffb700; border-bottom: 2px solid #ffb700; margin-top: 14px; }
+        .summary { background-color: #f0f8ff; padding: 10px; border-left: 4px solid #ff6b6b; margin-bottom: 12px; font-size: 8px; line-height: 1.5; }
+        .job-entry { margin-bottom: 11px; padding-bottom: 10px; border-bottom: 1px solid #e0e0e0; }
+        .job-entry:last-child { border-bottom: none; }
+        .job-title { font-weight: 700; font-size: 10px; color: #1a3a52; margin-bottom: 2px; }
+        .company-date { color: #666; font-size: 8px; margin-bottom: 4px; }
+        .company { font-weight: 600; color: #ff6b6b; }
+        .description { font-size: 8px; line-height: 1.4; color: #444; white-space: pre-wrap; }
+        .skill-block { background-color: rgba(255, 183, 0, 0.15); padding: 5px 8px; margin: 5px 0; border-left: 3px solid #ffb700; font-size: 8px; font-weight: 600; }
+        .skill-block.expert { background-color: rgba(255, 107, 107, 0.15); border-left-color: #ff6b6b; }
+        .contact-info { font-size: 7px; line-height: 1.8; margin-bottom: 15px; }
+        .contact-info span { display: block; word-break: break-word; }
+        .edu-entry { margin-bottom: 10px; }
+        .edu-entry .job-title { color: #1a3a52; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div style="text-align: center; margin-bottom: 18px; padding-bottom: 12px; border-bottom: 2px solid #ffb700;">
+                <h1>{{ data.personal_info.full_name if data.personal_info.full_name else 'Name' }}</h1>
+            </div>
+            {% if data.personal_info %}
+            <div>
+                <h2>CONTACT</h2>
+                <div class="contact-info">
+                    {% if data.personal_info.email %}<span>{{ data.personal_info.email }}</span>{% endif %}
+                    {% if data.personal_info.phone %}<span>{{ data.personal_info.phone }}</span>{% endif %}
+                    {% if data.personal_info.linkedin %}<span>{{ data.personal_info.linkedin }}</span>{% endif %}
+                </div>
+            </div>
+            {% endif %}
+            {% if data.skills and data.skills|length > 0 %}
+            <div>
+                <h2>SKILLS</h2>
+                {% for skill in data.skills %}
+                <div class="skill-block {% if skill.proficiency == 'Expert' %}expert{% endif %}">{{ skill.name }}</div>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+        <div class="main">
+            {% if data.personal_info and data.personal_info.summary %}
+            <h2>SUMMARY</h2>
+            <div class="summary">{{ data.personal_info.summary }}</div>
+            {% endif %}
+            {% if data.experiences and data.experiences|length > 0 %}
+            <h2>EXPERIENCE</h2>
+            {% for exp in data.experiences %}
+            <div class="job-entry">
+                <div class="job-title">{{ exp.job_title }}</div>
+                <div class="company-date"><span class="company">{{ exp.company }}</span> • {{ exp.start_date }} - {{ exp.end_date }}</div>
+                <div class="description">{{ exp.description }}</div>
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% if data.education and data.education|length > 0 %}
+            <h2>EDUCATION</h2>
+            {% for edu in data.education %}
+            <div class="edu-entry">
+                <div class="job-title">{{ edu.degree }}</div>
+                <div class="company-date">{{ edu.institution }} • {{ edu.year }}</div>
+            </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

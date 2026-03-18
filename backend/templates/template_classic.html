@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        @page { size: letter; margin: 0.4in; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 10px; color: #1a1a1a; line-height: 1.5; }
+        .header { background-color: #1a1a1a; color: white; padding: 22px; text-align: center; border-bottom: 5px solid #d4a574; }
+        h1 { font-size: 32px; margin: 0 0 8px 0; font-weight: 700; letter-spacing: 0.5px; }
+        .tagline { font-size: 11px; color: #d4a574; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; }
+        .header-divider { height: 2px; background-color: #d4a574; margin: 12px 0 0 0; }
+        .contact-info { font-size: 8px; line-height: 1.8; margin-top: 10px; }
+        .contact-info span { margin: 0 6px; }
+        .content { padding: 0 18px; }
+        h2 { font-size: 10px; color: #1a1a1a; border-bottom: 2px solid #d4a574; padding: 8px 0 6px 0; margin-top: 14px; margin-bottom: 8px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+        .summary { background-color: #f5f5f5; padding: 10px; border-left: 4px solid #d4a574; margin-bottom: 12px; font-size: 8px; line-height: 1.5; }
+        .job-entry { margin-bottom: 11px; padding-bottom: 10px; border-bottom: 1px solid #e0e0e0; }
+        .job-entry:last-child { border-bottom: none; }
+        .job-title { font-weight: 700; font-size: 10px; color: #1a1a1a; margin-bottom: 2px; }
+        .company-date { color: #666; font-size: 8px; margin-bottom: 4px; }
+        .company { font-weight: 600; color: #d4a574; }
+        .description { font-size: 8px; line-height: 1.4; color: #444; white-space: pre-wrap; }
+        .skill-tag { background-color: #f0f0f0; color: #1a1a1a; padding: 4px 9px; border-radius: 2px; font-size: 8px; font-weight: 600; display: inline-block; margin: 3px 3px 3px 0; border: 1px solid #d4a574; }
+        .skill-tag.expert { background-color: #d4a574; color: white; border: 1px solid #d4a574; }
+        .skill-tag.advanced { background-color: #e8dcc8; color: #1a1a1a; border: 1px solid #d4a574; }
+        .edu-entry { margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>{{ data.personal_info.full_name if data.personal_info.full_name else 'Name' }}</h1>
+        <div class="tagline">Professional Profile</div>
+        <div class="header-divider"></div>
+        {% if data.personal_info %}
+        <div class="contact-info">
+            {% if data.personal_info.email %}<span>{{ data.personal_info.email }}</span>{% endif %}
+            {% if data.personal_info.phone %}<span>{{ data.personal_info.phone }}</span>{% endif %}
+            {% if data.personal_info.linkedin %}<span>{{ data.personal_info.linkedin }}</span>{% endif %}
+        </div>
+        {% endif %}
+    </div>
+    <div class="content">
+        {% if data.personal_info and data.personal_info.summary %}
+        <h2>Professional Summary</h2>
+        <div class="summary">{{ data.personal_info.summary }}</div>
+        {% endif %}
+        {% if data.experiences and data.experiences|length > 0 %}
+        <h2>Professional Experience</h2>
+        {% for exp in data.experiences %}
+        <div class="job-entry">
+            <div class="job-title">{{ exp.job_title }}</div>
+            <div class="company-date"><span class="company">{{ exp.company }}</span> • {{ exp.start_date }} - {{ exp.end_date }}</div>
+            <div class="description">{{ exp.description }}</div>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% if data.education and data.education|length > 0 %}
+        <h2>Education</h2>
+        {% for edu in data.education %}
+        <div class="edu-entry">
+            <div class="job-title">{{ edu.degree }}</div>
+            <div class="company-date">{{ edu.institution }} • {{ edu.year }}</div>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% if data.skills and data.skills|length > 0 %}
+        <h2>Skills</h2>
+        {% for skill in data.skills %}
+        <span class="skill-tag {% if skill.proficiency == 'Expert' %}expert{% elif skill.proficiency == 'Advanced' %}advanced{% endif %}">{{ skill.name }}</span>
+        {% endfor %}
+        {% endif %}
+    </div>
+</body>
+</html>
+
+    {% if data.education and data.education|length > 0 %}
+        <h2>Education</h2>
+        {% for edu in data.education %}
+        <div class="edu-entry">
+            <div class="job-title">{{ edu.degree }}</div>
+            <div class="company-date"><span class="company">{{ edu.institution }}</span> • {{ edu.year }}</div>
+        </div>
+        {% endfor %}
+    {% endif %}
+
+    {% if data.skills and data.skills|length > 0 %}
+        <h2>Skills</h2>
+        {% for skill in data.skills %}
+            <span class="skill-tag {% if skill.proficiency == 'Expert' %}expert{% elif skill.proficiency == 'Advanced' %}advanced{% endif %}">{{ skill.name }}</span>
+        {% endfor %}
+    {% endif %}
+</body>
+</html>

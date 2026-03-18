@@ -1,0 +1,22 @@
+﻿John Doe
+Software Engineer
+john.doe@email.com | +1-555-123-4567
+
+Professional Summary
+Experienced software engineer with 5 years of experience in Python, JavaScript, and cloud technologies.
+
+Work Experience
+Senior Software Engineer | TechCorp Inc. | Jan 2021 - Present
+- Developed and maintained web applications using React and Node.js
+- Led a team of 3 developers on a customer-facing portal project
+
+Software Developer | StartupXYZ | Jun 2019 - Dec 2020
+- Built RESTful APIs using Python Flask
+- Implemented CI/CD pipelines using Jenkins
+
+Education
+Bachelor of Science in Computer Science | MIT | 2019
+GPA: 3.8
+
+Skills
+Python, JavaScript, React, Node.js, SQL, AWS, Docker, Git

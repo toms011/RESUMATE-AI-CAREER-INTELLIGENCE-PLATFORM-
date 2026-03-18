@@ -1,0 +1,41 @@
+
+    JOHN SMITH
+    john.smith@email.com | (555) 123-4567
+    linkedin.com/in/johnsmith
+    
+    PROFESSIONAL SUMMARY
+    Experienced software developer with 5+ years of expertise in Python, JavaScript, and cloud technologies.
+    Passionate about building scalable applications and mentoring junior developers.
+    
+    EXPERIENCE
+    
+    Senior Software Developer
+    Tech Corporation Inc. | January 2020 - Present
+    - Led development of microservices architecture using Python and AWS
+    - Improved application performance by 40% through database optimization
+    - Mentored team of 3 junior developers
+    
+    Software Developer
+    StartUp Solutions | June 2018 - December 2019
+    - Developed full-stack web applications using React and Node.js
+    - Implemented CI/CD pipelines using Docker and Jenkins
+    - Reduced deployment time from 45 minutes to 10 minutes
+    
+    EDUCATION
+    
+    Bachelor of Science in Computer Science
+    State University | May 2018
+    
+    SKILLS
+    
+    Programming Languages: Python, JavaScript, Java, C++
+    Web Technologies: React, Node.js, Django, REST APIs
+    Cloud Platforms: AWS, Google Cloud, Azure
+    Databases: PostgreSQL, MongoDB, Redis
+    Tools & Platforms: Docker, Kubernetes, Git, Jenkins
+    
+    CERTIFICATIONS
+    
+    AWS Solutions Architect Associate | 2021
+    Python Professional Developer | 2020
+    

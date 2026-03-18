@@ -1,0 +1,246 @@
+.ats-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    backdrop-filter: blur(4px);
+}
+
+.ats-modal-content {
+    background: white;
+    width: 90%;
+    max-width: 600px;
+    max-height: 90vh;
+    border-radius: 16px;
+    padding: 24px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.ats-close-btn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #6b7280;
+}
+
+.ats-modal-content h2 {
+    margin-top: 0;
+    color: #111827;
+    border-bottom: 1px solid #e5e7eb;
+    padding-bottom: 16px;
+}
+
+.ats-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    color: #4b5563;
+}
+
+.spinner {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3b82f6;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin-bottom: 16px;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.ats-error {
+    background: #fee2e2;
+    color: #b91c1c;
+    padding: 16px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.ats-results {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+}
+
+.ats-scroll-content {
+    overflow-y: auto;
+    flex: 1;
+    padding-right: 8px;
+    /* For scrollbar space */
+}
+
+/* Score Header */
+.ats-score-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 0;
+    border-bottom: 1px solid #f3f4f6;
+    margin-bottom: 20px;
+}
+
+.ats-score-circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 5px solid #e5e7eb;
+}
+
+.ats-score-circle.score-green {
+    border-color: #10b981;
+    color: #10b981;
+}
+
+.ats-score-circle.score-yellow {
+    border-color: #f59e0b;
+    color: #f59e0b;
+}
+
+.ats-score-circle.score-red {
+    border-color: #ef4444;
+    color: #ef4444;
+}
+
+.score-number {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.score-label {
+    font-size: 12px;
+    color: #6b7280;
+}
+
+.ats-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.ats-card {
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 16px;
+    background: #f9fafb;
+}
+
+.ats-card.issue-card {
+    border-left: 4px solid #ef4444;
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.section-tag {
+    background: #e5e7eb;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #4b5563;
+}
+
+.ats-card h4 {
+    margin: 0;
+    font-size: 16px;
+    color: #1f2937;
+}
+
+.ats-card .reason {
+    margin: 8px 0;
+    font-size: 14px;
+    color: #4b5563;
+}
+
+.ats-card .fix-box {
+    background: #ffffff;
+    border: 1px solid #d1d5db;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 14px;
+    color: #059669;
+    margin-top: 8px;
+}
+
+.ats-advantages-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.ats-advantages-list li {
+    padding: 8px 0;
+    border-bottom: 1px solid #f3f4f6;
+    color: #059669;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.ats-advantages-list li::before {
+    content: '✓';
+    font-weight: bold;
+}
+
+.btn-recheck {
+    margin-top: 20px;
+    padding: 12px;
+    background: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+}
+
+.btn-recheck:hover {
+    background: #2563eb;
+}

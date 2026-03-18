@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        @page { size: letter; margin: 0.45in 0.5in; }
+        body { font-family: Arial, Helvetica, sans-serif; font-size: 9px; color: #3a3a3a; line-height: 1.55; background: #ffffff; }
+
+        /* ── HEADER ── */
+        .header { display: table; width: 100%; border-bottom: 2px solid #e8e8e8; padding-bottom: 14px; margin-bottom: 14px; }
+        .photo-cell { display: table-cell; width: 82px; vertical-align: top; }
+        .photo-box { width: 70px; height: 70px; background-color: #f5c842; border-radius: 6px; text-align: center; line-height: 70px; font-size: 28px; font-weight: 700; color: #ffffff; overflow: hidden; }
+        .info-cell { display: table-cell; vertical-align: middle; padding-left: 14px; }
+        .candidate-name { font-size: 24px; font-weight: 700; color: #1a1a1a; letter-spacing: 0.5px; text-transform: uppercase; line-height: 1.1; }
+        .candidate-title { font-size: 11px; font-weight: 400; color: #7a7a7a; margin-top: 4px; letter-spacing: 0.3px; }
+
+        /* ── CONTACT BAR ── */
+        .contact-bar { display: table; width: 100%; margin-top: 10px; border-top: 1px solid #efefef; padding-top: 8px; }
+        .contact-item { display: table-cell; font-size: 8px; color: #555; padding-right: 14px; white-space: nowrap; }
+        .contact-icon { color: #f5c842; font-weight: 700; margin-right: 3px; }
+
+        /* ── SECTIONS ── */
+        .section { margin-bottom: 13px; }
+        .section-title { font-size: 10px; font-weight: 700; color: #1a1a1a; text-transform: uppercase; letter-spacing: 0.8px; padding-bottom: 5px; border-bottom: 1.5px solid #e0e0e0; margin-bottom: 9px; }
+
+        /* ── PROFILE ── */
+        .profile-text { font-size: 9px; color: #4a4a4a; line-height: 1.65; }
+
+        /* ── EXPERIENCE ── */
+        .exp-entry { margin-bottom: 10px; }
+        .exp-header { display: table; width: 100%; margin-bottom: 2px; }
+        .exp-title { display: table-cell; font-weight: 700; font-size: 9.5px; color: #1a1a1a; }
+        .exp-date { display: table-cell; text-align: right; font-size: 8px; color: #999; white-space: nowrap; }
+        .exp-company { font-size: 8.5px; color: #f5c842; font-weight: 700; margin-bottom: 4px; }
+        .bullet-list { padding-left: 12px; }
+        .bullet-list li { font-size: 8.5px; color: #4a4a4a; margin-bottom: 2px; line-height: 1.5; }
+
+        /* ── EDUCATION ── */
+        .edu-entry { margin-bottom: 9px; }
+        .edu-header { display: table; width: 100%; }
+        .edu-degree { display: table-cell; font-weight: 700; font-size: 9.5px; color: #1a1a1a; }
+        .edu-date { display: table-cell; text-align: right; font-size: 8px; color: #999; white-space: nowrap; }
+        .edu-school { font-size: 8.5px; color: #f5c842; font-weight: 700; margin-bottom: 3px; }
+
+        /* ── SKILLS ── */
+        .skills-grid { display: table; width: 100%; }
+        .skills-col { display: table-cell; width: 50%; vertical-align: top; }
+        .skill-item { font-size: 8.5px; color: #3a3a3a; padding: 2px 0 2px 12px; position: relative; }
+        .skill-item:before { content: "▪"; position: absolute; left: 0; color: #f5c842; font-size: 10px; top: 0; }
+
+        /* ── DIVIDER ── */
+        .section-divider { border: none; border-top: 1px solid #efefef; margin: 13px 0; }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <div class="header">
+        <div class="photo-cell">
+            <div class="photo-box">
+                {% if data.personal_info and data.personal_info.full_name %}
+                    {{ data.personal_info.full_name[0] | upper }}
+                {% else %}
+                    R
+                {% endif %}
+            </div>
+        </div>
+        <div class="info-cell">
+            <div class="candidate-name">{{ data.personal_info.full_name if data.personal_info and data.personal_info.full_name else 'Your Name' }}</div>
+            <div class="candidate-title">{{ data.personal_info.job_title if data.personal_info and data.personal_info.job_title else 'Professional Title' }}</div>
+
+            <!-- CONTACT BAR -->
+            <div class="contact-bar">
+                {% if data.personal_info %}
+                    {% if data.personal_info.location or data.personal_info.city %}
+                    <span class="contact-item"><span class="contact-icon">&#9679;</span>{{ data.personal_info.city if data.personal_info.city else data.personal_info.location }}</span>
+                    {% endif %}
+                    {% if data.personal_info.phone %}
+                    <span class="contact-item"><span class="contact-icon">&#9679;</span>{{ data.personal_info.phone }}</span>
+                    {% endif %}
+                    {% if data.personal_info.email %}
+                    <span class="contact-item"><span class="contact-icon">&#9679;</span>{{ data.personal_info.email }}</span>
+                    {% endif %}
+                    {% if data.personal_info.linkedin %}
+                    <span class="contact-item"><span class="contact-icon">&#9679;</span>{{ data.personal_info.linkedin }}</span>
+                    {% endif %}
+                    {% if data.personal_info.github %}
+                    <span class="contact-item"><span class="contact-icon">&#9679;</span>{{ data.personal_info.github }}</span>
+                    {% endif %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- PROFILE SUMMARY -->
+    {% if data.personal_info and data.personal_info.summary %}
+    <div class="section">
+        <div class="section-title">Profile</div>
+        <div class="profile-text">{{ data.personal_info.summary }}</div>
+    </div>
+    {% endif %}
+
+    <!-- EXPERIENCE -->
+    {% if data.experiences and data.experiences|length > 0 %}
+    <div class="section">
+        <div class="section-title">Experience</div>
+        {% for exp in data.experiences %}
+        <div class="exp-entry">
+            <div class="exp-header">
+                <div class="exp-title">{{ exp.job_title }}</div>
+                <div class="exp-date">{{ exp.start_date }} – {{ exp.end_date }}</div>
+            </div>
+            <div class="exp-company">{{ exp.company }}</div>
+            {% if exp.description %}
+            <ul class="bullet-list">
+                {% for line in exp.description.split('\n') %}
+                    {% if line.strip() %}
+                    <li>{{ line.strip().lstrip('-•*').strip() }}</li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- EDUCATION -->
+    {% if data.education and data.education|length > 0 %}
+    <div class="section">
+        <div class="section-title">Education</div>
+        {% for edu in data.education %}
+        <div class="edu-entry">
+            <div class="edu-header">
+                <div class="edu-degree">{{ edu.degree }}</div>
+                <div class="edu-date">{{ edu.year }}</div>
+            </div>
+            <div class="edu-school">{{ edu.institution }}</div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- SKILLS -->
+    {% if data.skills and data.skills|length > 0 %}
+    <div class="section">
+        <div class="section-title">Skills</div>
+        <div class="skills-grid">
+            <div class="skills-col">
+                {% for skill in data.skills[:((data.skills|length + 1) // 2)] %}
+                <div class="skill-item">{{ skill.name }}{% if skill.proficiency %} – {{ skill.proficiency }}{% endif %}</div>
+                {% endfor %}
+            </div>
+            <div class="skills-col">
+                {% for skill in data.skills[((data.skills|length + 1) // 2):] %}
+                <div class="skill-item">{{ skill.name }}{% if skill.proficiency %} – {{ skill.proficiency }}{% endif %}</div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+</body>
+</html>

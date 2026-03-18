@@ -1,0 +1,542 @@
+/* ==================== TEMPLATE SELECTOR CONTAINER ==================== */
+
+.template-selector-container {
+  background: white;
+  padding: 32px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+}
+
+/* ==================== HEADER SECTION ==================== */
+
+.template-selector-header {
+  margin-bottom: 32px;
+}
+
+.template-selector-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  letter-spacing: -0.5px;
+}
+
+.template-icon {
+  font-size: 28px;
+  display: inline-block;
+}
+
+.template-selector-subtitle {
+  font-size: 14px;
+  color: #64748b;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ==================== TEMPLATE GRID ==================== */
+
+.template-grid {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+/* ==================== TEMPLATE CARD BASE ==================== */
+
+.template-card {
+  cursor: pointer;
+  border-radius: 12px;
+  border: 2px solid #e5e7eb;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  width: 240px;
+  flex-shrink: 0;
+}
+
+.template-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* ==================== TEMPLATE CARD STATES ==================== */
+
+.template-card-default:hover {
+  border-color: #1e40af;
+  box-shadow: 0 12px 32px rgba(30, 64, 175, 0.15);
+}
+
+.template-card-selected {
+  border-color: #1e40af;
+  background: linear-gradient(135deg, #f0f9ff 0%, #eff6ff 100%);
+  box-shadow: 0 12px 32px rgba(30, 64, 175, 0.2),
+              0 0 0 3px rgba(30, 64, 175, 0.08);
+}
+
+/* ==================== TEMPLATE PREVIEW SECTION ==================== */
+
+.template-preview {
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 80px;
+  font-weight: 600;
+  position: relative;
+  overflow: hidden;
+}
+
+.template-preview::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: inherit;
+  opacity: 0.5;
+  z-index: -1;
+}
+
+/* Template Category Colors */
+.template-preview-modern {
+  background: linear-gradient(135deg, #e0e7ff 0%, #dbeafe 100%);
+  color: #3730a3;
+}
+
+.template-preview-classic {
+  background: linear-gradient(135deg, #fef3c7 0%, #fce7f3 100%);
+  color: #a16207;
+}
+
+.template-preview-minimal {
+  background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+  color: #475569;
+}
+
+/* ==================== TEMPLATE CONTENT ==================== */
+
+.template-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+/* ==================== TEMPLATE NAME SECTION ==================== */
+
+.template-name-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  gap: 12px;
+}
+
+.template-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+  letter-spacing: -0.3px;
+}
+
+.template-checkmark {
+  font-size: 24px;
+  color: #1e40af;
+  font-weight: 700;
+  flex-shrink: 0;
+  animation: scaleIn 0.3s ease;
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ==================== TEMPLATE DESCRIPTION ==================== */
+
+.template-description {
+  font-size: 13px;
+  color: #64748b;
+  line-height: 1.5;
+  margin: 0 0 16px 0;
+  flex-grow: 1;
+}
+
+/* ==================== TEMPLATE BADGE ==================== */
+
+.template-badge-section {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.template-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 6px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+}
+
+.template-badge-modern {
+  background: linear-gradient(135deg, #e0e7ff 0%, #dbeafe 100%);
+  color: #1e40af;
+  border: 1px solid #bfdbfe;
+}
+
+.template-badge-classic {
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  color: #92400e;
+  border: 1px solid #fcd34d;
+}
+
+.template-badge-minimal {
+  background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+  color: #334155;
+  border: 1px solid #cbd5e1;
+}
+
+.template-card-selected .template-badge {
+  font-weight: 700;
+  box-shadow: 0 2px 6px rgba(30, 64, 175, 0.1);
+}
+
+/* ==================== LOADING STATE ==================== */
+
+.template-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 48px 32px;
+  background: white;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #e5e7eb;
+  border-top-color: #1e40af;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ==================== EMPTY STATE ==================== */
+
+.template-empty {
+  text-align: center;
+  padding: 48px 32px;
+  color: #94a3b8;
+  font-size: 16px;
+}
+
+/* ==================== RESPONSIVE DESIGN ==================== */
+
+@media (max-width: 1024px) {
+  .template-selector-container {
+    padding: 24px;
+  }
+
+  .template-grid {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+  }
+
+  .template-preview {
+    height: 160px;
+    font-size: 64px;
+  }
+
+  .template-content {
+    padding: 16px;
+  }
+
+  .template-name {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .template-selector-container {
+    padding: 20px;
+  }
+
+  .template-selector-title {
+    font-size: 20px;
+  }
+
+  .template-selector-subtitle {
+    font-size: 13px;
+  }
+
+  .template-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+  }
+
+  .template-preview {
+    height: 140px;
+    font-size: 56px;
+  }
+
+  .template-card:hover {
+    transform: translateY(-4px);
+  }
+}
+
+@media (max-width: 480px) {
+  .template-selector-container {
+    padding: 16px;
+    border-radius: 8px;
+  }
+
+  .template-selector-title {
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+
+  .template-selector-subtitle {
+    font-size: 12px;
+    margin-bottom: 16px;
+  }
+
+  .template-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .template-preview {
+    height: 120px;
+    font-size: 48px;
+  }
+
+  .template-content {
+    padding: 12px;
+  }
+
+  .template-name {
+    font-size: 14px;
+  }
+
+  .template-description {
+    font-size: 12px;
+  }
+
+  .template-badge {
+    font-size: 10px;
+    padding: 4px 8px;
+  }
+}
+
+/* ==================== TEMPLATE SECTIONS (ATS / DESIGN split) ==================== */
+
+.template-section {
+  margin-bottom: 36px;
+}
+
+.template-section-design {
+  border-top: 2px dashed #e5e7eb;
+  padding-top: 28px;
+}
+
+.template-section-header {
+  margin-bottom: 20px;
+}
+
+.template-section-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 999px;
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+}
+
+.template-section-badge.ats {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.template-section-badge.design {
+  background: #f3e8ff;
+  color: #7e22ce;
+}
+
+.template-section-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0 0 4px;
+}
+
+.template-section-desc {
+  font-size: 13px;
+  color: #64748b;
+  margin: 0;
+}
+
+.template-section-desc.warning-text,
+.warning-text {
+  color: #b45309;
+}
+
+/* ── More Templates button ── */
+.more-templates-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border: 2px solid #a855f7;
+  background: white;
+  color: #7c3aed;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.more-templates-btn:hover {
+  background: #f5f3ff;
+  border-color: #7c3aed;
+}
+
+/* ── Design template card ── */
+.template-card-design {
+  border-color: #e9d5ff;
+}
+
+.template-card-design:hover,
+.template-card-design.template-card-selected {
+  border-color: #a855f7;
+  box-shadow: 0 12px 32px rgba(168, 85, 247, 0.2);
+}
+
+.template-badge-design {
+  background: linear-gradient(135deg, #f3e8ff, #ede9fe);
+  color: #7e22ce;
+  border: 1px solid #d8b4fe;
+}
+
+/* ==================== ATS WARNING MODAL ==================== */
+
+.ats-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeIn 0.15s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.ats-modal {
+  background: white;
+  border-radius: 20px;
+  padding: 36px 32px;
+  max-width: 440px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.2);
+  animation: slideUp 0.2s ease;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+.ats-modal-icon {
+  font-size: 48px;
+  margin-bottom: 12px;
+}
+
+.ats-modal-title {
+  font-size: 20px;
+  font-weight: 800;
+  color: #1e293b;
+  margin: 0 0 16px;
+}
+
+.ats-modal-body {
+  font-size: 14px;
+  color: #475569;
+  line-height: 1.7;
+  margin: 0 0 12px;
+}
+
+.ats-modal-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.ats-modal-cancel {
+  flex: 1;
+  padding: 12px;
+  border: 2px solid #e2e8f0;
+  background: white;
+  color: #475569;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.ats-modal-cancel:hover {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+}
+
+.ats-modal-confirm {
+  flex: 1;
+  padding: 12px;
+  background: linear-gradient(135deg, #7c3aed, #6d28d9);
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.ats-modal-confirm:hover {
+  background: linear-gradient(135deg, #6d28d9, #5b21b6);
+  transform: translateY(-1px);
+}

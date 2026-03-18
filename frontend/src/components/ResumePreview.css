@@ -1,0 +1,360 @@
+/* ==================== PREVIEW CONTAINER ==================== */
+.preview-container {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  /* Start from top so scaling doesn't push it up */
+  overflow-y: auto;
+  /* Allow scrolling if scaled height > container height */
+  overflow-x: hidden;
+  /* Prevent horizontal scroll */
+  background: #f3f4f6;
+  padding: 20px 0;
+  /* Vertical padding */
+}
+
+/* Scrollbar styling */
+.preview-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.preview-container::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+
+.preview-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* ==================== SCALER WRAPPER ==================== */
+.preview-scaler {
+  transform-origin: top center;
+  transition: transform 0.1s linear;
+  /* Smooth resizing */
+  margin-bottom: 40px;
+  /* Space at bottom for scrolling */
+}
+
+/* ==================== RESUME PAPER (Fixed A4) ==================== */
+.resume-paper {
+  width: 794px;
+  /* A4 Width at 96 DPI */
+  min-height: 1123px;
+  /* A4 Height */
+  background: white;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  padding: 40px;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+  color: #333;
+}
+
+/* ==================== RESUME STYLES ==================== */
+
+/* Header */
+.resume-header {
+  border-bottom: 2px solid #eee;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.profile-photo {
+  width: 80px;
+  height: 80px;
+  background: #e0e7ff;
+  border-radius: 50%;
+  border: 2px solid #6366f1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+}
+
+.header-content h1 {
+  margin: 0;
+  font-size: 28px;
+  color: #111;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.job-title {
+  color: #6366f1;
+  font-weight: 600;
+  font-size: 16px;
+  margin-top: 4px;
+}
+
+.contact-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 12px;
+  color: #666;
+  margin-top: 8px;
+}
+
+/* Sections */
+.resume-section {
+  margin-bottom: 24px;
+}
+
+.resume-section h2 {
+  font-size: 14px;
+  color: #111;
+  border-bottom: 2px solid #6366f1;
+  padding-bottom: 8px;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.resume-section p {
+  font-size: 12px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Entries */
+.resume-entry {
+  margin-bottom: 16px;
+}
+
+.entry-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.entry-header h3 {
+  font-size: 14px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.date {
+  font-size: 12px;
+  color: #888;
+  font-weight: 500;
+}
+
+.company {
+  font-size: 12px;
+  color: #6366f1;
+  font-weight: 600;
+  margin: 0 0 4px 0;
+}
+
+.field {
+  font-style: italic;
+  font-size: 12px;
+  color: #555;
+  margin: 0 0 4px 0;
+}
+
+.description {
+  font-size: 12px;
+  color: #444;
+  white-space: pre-wrap;
+}
+
+/* Skills */
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skill-tag {
+  background: #eef2ff;
+  color: #4f46e5;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+/* Blur Mode */
+.section-blurred {
+  filter: blur(3px);
+  opacity: 0.5;
+  transition: all 0.3s;
+}
+
+/* Template Variants (Simple examples) */
+.resume-paper.template-1 {
+  border-top: 8px solid #6366f1;
+}
+
+.resume-paper.template-2 {
+  border-left: 8px solid #10b981;
+}
+
+.resume-paper.template-3 {
+  border-right: 8px solid #f59e0b;
+}
+
+.resume-paper.template-4 {
+  background: #fafafa;
+  border: 1px solid #ddd;
+}
+
+/* ══════════════════════════════════════════════
+   PRINT / PDF EXPORT STYLES
+   @page MUST be at stylesheet root — NOT inside @media print
+   ══════════════════════════════════════════════ */
+
+/* 1. Lock page to A4, remove ALL browser default margins */
+@page {
+  size: A4 portrait;
+  margin: 0;
+}
+
+/* 2. Print-specific overrides */
+@media print {
+  /* ── Hide every UI element except the resume paper ── */
+  html, body {
+    width: 210mm;
+    height: 297mm;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: white !important;
+    overflow: hidden;
+  }
+
+  /* Hide all builder chrome */
+  .resume-builder > .resume-sidebar,
+  .resume-builder > .resume-content,
+  .steps-container,
+  .form-navigation,
+  .auto-fit-overlay,
+  .edit-tab-container,
+  .preview-container > *:not(.preview-scaler) {
+    display: none !important;
+  }
+
+  /* ── Reset the builder shell ── */
+  .resume-builder {
+    display: block !important;
+    position: static !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: white !important;
+    height: auto !important;
+    width: auto !important;
+    overflow: visible !important;
+  }
+
+  /* ── Reset the panel wrapper ── */
+  .resume-preview-panel {
+    display: block !important;
+    position: static !important;
+    width: 210mm !important;
+    min-height: 297mm !important;
+    height: auto !important;       /* never clip; let content flow */
+    margin: 0 !important;
+    padding: 0 !important;
+    background: white !important;
+    overflow: visible !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  /* ── Reset the grey preview backdrop ── */
+  .preview-container {
+    display: block !important;
+    position: static !important;
+    width: 210mm !important;
+    height: auto !important;
+    min-height: unset !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    overflow: visible !important;
+  }
+
+  /* ── Kill the zoom/scaling transform ── */
+  .preview-scaler {
+    display: block !important;
+    position: static !important;
+    transform: none !important;
+    transform-origin: unset !important;
+    transition: none !important;
+    width: 210mm !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+  }
+
+  /* ── The A4 paper itself ── */
+  .resume-paper {
+    display: block !important;
+    width: 210mm !important;
+    min-height: 297mm !important;
+    height: auto !important;      /* allow multi-page flow */
+    margin: 0 !important;
+    padding: 15mm 18mm !important; /* consistent margins; overrides inline 20mm */
+    box-sizing: border-box !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: white !important;
+    transform: none !important;
+    overflow: visible !important;
+    page-break-after: always;
+  }
+
+  /* ── Section break control ── */
+  .resume-section,
+  .resume-entry,
+  .experience-entry,
+  .education-entry {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* ── Preserve colors exactly (accents, skill tags, etc.) ── */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  /* ── Strip box-shadows and screen-only decorations ── */
+  *:not(.resume-paper) {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  /* ── DESIGN template: ensure background image prints ── */
+  .design-template {
+    position: relative !important;
+    overflow: visible !important;
+  }
+
+  .design-template-bg {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: top left !important;
+    z-index: 0 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .design-template-content {
+    position: relative !important;
+    z-index: 1 !important;
+  }
+}
