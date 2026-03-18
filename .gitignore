@@ -1,0 +1,69 @@
+# ─── Node.js / npm ────────────────────────────────────────────────────────────
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npm
+.yarn-integrity
+package-lock.json
+yarn.lock
+
+# ─── Python ───────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+.venv/
+venv/
+env/
+ENV/
+*.pyo
+*.pyc
+.Python
+
+# ─── Environment variables ────────────────────────────────────────────────────
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.*.local
+
+# ─── IDE / Editor ─────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ─── OS files ─────────────────────────────────────────────────────────────────
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# ─── Build outputs ────────────────────────────────────────────────────────────
+/frontend/.next/
+/frontend/out/
+/frontend/build/
+/backend/__pycache__/
+
+# ─── Logs ─────────────────────────────────────────────────────────────────────
+logs/
+*.log
+
+# ─── Coverage ─────────────────────────────────────────────────────────────────
+coverage/
+.coverage
+htmlcov/
+.pytest_cache/
+
+# ─── Git LFS tracked (large zip archives) ─────────────────────────────────────
+# Large zip archives in releases/ are tracked via Git LFS (see .gitattributes)
